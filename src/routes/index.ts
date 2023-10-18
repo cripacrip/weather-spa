@@ -1,5 +1,4 @@
 import { createRouter, createWebHistory } from 'vue-router'
-
 import { ROUTERS_NAME } from './constants';
 
 export { ROUTERS_NAME } from './constants';
@@ -14,6 +13,13 @@ const routes = [
     path: '/weather',
     name: ROUTERS_NAME.weather,
     component: () => import('@/components/pages/weather-main/weather-main.vue'),
+    children: [
+      {
+        path: '',
+        name: ROUTERS_NAME.dashboard,
+        component: () => import('@/components/pages/dashboards/dashboard-weather.vue'),
+      }
+    ]
   }
 ];
 

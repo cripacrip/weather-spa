@@ -10,9 +10,11 @@
 import { onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useGeolocationStore } from '@/stores/geolocation'
+import { useWeatherStore } from '@/stores/weather'
 
 const router = useRouter();
 const geolocationStore = useGeolocationStore()
+const weatherStore = useWeatherStore()
 
 const goToWeather = () => {
    router.push('/weather');
@@ -20,6 +22,7 @@ const goToWeather = () => {
 
 onMounted(async () => {
   geolocationStore.getUserGeolocation()
+  weatherStore
 });
 
 </script>
