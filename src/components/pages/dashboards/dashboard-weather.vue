@@ -1,23 +1,27 @@
 <template>
   <div class="dashboard">
-      <input type="text" v-model="searchQuery">
-      <button @click="searchWeatherOfCity">Search</button>
-
-      <WeatherCard v-for="item in weatherStore.cityWeather" :key="item.id" :item="item" />
+      <WeatherCurrentCard :currentCity="weatherStore.currentCityWeather"/>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { onMounted } from 'vue'
 import { useWeatherStore } from '@/stores/weather'
-import WeatherCard from '@/components/weather-card.vue'
+import { useGeolocationStore } from '@/stores/geolocation'
+import WeatherCurrentCard from '@/components/pages/weather-main/weather-list/weather-current-card.vue'
 
 const weatherStore = useWeatherStore()
-const searchQuery  = ref('')
+const geolocationStore = useGeolocationStore()
+const storeCity = localStorage.getItem('currentCity')
 
 const searchWeatherOfCity = (() => {
-  weatherStore.getWeather(searchQuery.value)
-  searchQuery.value = ''
+  weatherStore.getWeatherLocationCity(geolocationStore.userCity || storeCity)
+})
+onMounted(() => {
+  geolocationStore.getUserGeolocation()
+  weatherStore
+  geolocationStore
+  searchWeatherOfCity()
 })
 </script>
 

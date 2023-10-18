@@ -4,16 +4,16 @@
       Weather
     </div>
     <nav class="sidebar__navigation">
-      <router-link
+      <!-- <router-link
         :to="{ name: ROUTERS_NAME.home }"
         class="sidebar__navigation-link"
       >
         <span>
           Home
         </span>
-      </router-link>
+      </router-link> -->
       <router-link
-        :to="{ name: ROUTERS_NAME.weather }"
+        :to="{ name: ROUTERS_NAME.dashboard }"
         class="sidebar__navigation-link"
       >
         <span>
