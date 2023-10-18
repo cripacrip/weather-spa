@@ -1,0 +1,6 @@
+{
+  "printWidth": 80,
+  "htmlWhitespaceSensitivity": "strict",
+  "tabWidth": 2,
+  "html.format.wrapAttributes": "force-expand-multiline"
+}
